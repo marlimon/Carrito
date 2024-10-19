@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            border: 2px solid rgb(232, 20, 155);
+            padding: 20px;
+        }
+        #container {
+            border: 2px solid rgb(22, 155, 179);
+            padding: 20px;
+            display: inline-block;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 30px;
+            font-size: 18px;
+            color: rgb(154, 208, 27);
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejemplos de Eventos Burbujeantes</h1>
+    <div id="container">
+        <button id="btnClick">Click</button>
+        <button id="btnMouseOver">Mouse Over</button>
+        <button id="btnDblClick">Doble Click</button>
+        
+    </div>
+    <div id="result">Interactúa con los botones para ver el resultado aquí.</div>
+
+    <script>
+        // Manejadores de eventos en los botones
+        document.getElementById('btnClick').addEventListener('click', function(event) {
+            document.getElementById('result').textContent = '¡Evento Click en el botón!';
+        });
+
+        document.getElementById('btnMouseOver').addEventListener('mouseover', function(event) {
+            document.getElementById('result').textContent = '¡Mouse Over en el botón!';
+        });
+
+        document.getElementById('btnDblClick').addEventListener('dblclick', function(event) {
+            document.getElementById('result').textContent = '¡Doble Click en el botón!';
+        });
+
+        // Evento burbujeante en el contenedor
+        document.getElementById('container').addEventListener('click', function(event) {
+            document.getElementById('result').textContent = '¡Evento Click burbujeó hasta el contenedor!';
+        });
+
+        document.getElementById('container').addEventListener('mouseover', function(event) {
+            document.getElementById('result').textContent = '¡Mouse Over burbujeó hasta el contenedor!';
+        });
+
+        document.getElementById('container').addEventListener('dblclick', function(event) {
+            document.getElementById('result').textContent = '¡Doble Click burbujeó hasta el contenedor!';
+        });
+
+        // Evento burbujeante en el body
+        document.body.addEventListener('click', function(event) {
+            document.getElementById('result').textContent = '¡Evento Click burbujeó hasta el body!';
+        });
+
+        document.body.addEventListener('mouseover', function(event) {
+            document.getElementById('result').textContent = '¡Mouse Over burbujeó hasta el body!';
+        });
+
+        document.body.addEventListener('dblclick', function(event) {
+            document.getElementById('result').textContent = '¡Doble Click burbujeó hasta el body!';
+        });
+    </script>
+</body>
+</html>
